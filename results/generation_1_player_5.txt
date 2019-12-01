@@ -1,0 +1,2 @@
+Result.Defeat
+[10, 0, 3]

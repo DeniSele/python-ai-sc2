@@ -1,0 +1,2 @@
+Result.Defeat
+[64, 0, 0]

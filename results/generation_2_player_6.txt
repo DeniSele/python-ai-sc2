@@ -1,0 +1,2 @@
+Result.Defeat
+[83, 0, 0]
