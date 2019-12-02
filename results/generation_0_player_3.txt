@@ -1,0 +1,2 @@
+Result.Defeat
+[125, 0, 0]

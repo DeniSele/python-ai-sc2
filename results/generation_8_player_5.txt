@@ -1,0 +1,2 @@
+Result.Victory
+[21, 42, 0]
