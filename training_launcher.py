@@ -58,7 +58,7 @@ if not USE_SAVED_WEIGHTS:
 else:
     # Get the latest saved version of the data, based on LOAD_GENERATION_NUMBER
     for curr_sol in numpy.arange(0, sol_per_pop):
-        f = open("python-ai-sc2\\weights\\generation_" + str(LOAD_GENERATION_NUMBER) +
+        f = open("weights\\generation_" + str(LOAD_GENERATION_NUMBER) +
                  "_weights_" + str(curr_sol) + ".pkl", "rb")
         new_weight = pickle.load(f)
         initial_pop_weights.append(new_weight)
@@ -82,13 +82,13 @@ for generation in range(LOAD_GENERATION_NUMBER,
         procs = []
         for i in range(j * half_part_of_sol, half_part_of_sol * (j + 1)):
             print("i: ", i)
-            f = open("python-ai-sc2\\weights\\generation_" + str(generation) +
+            f = open("weights\\generation_" + str(generation) +
                      "_weights_" +  str(i) + ".pkl", "wb")
             pickle.dump(pop_weights_mat[i], f)
             f.close()
             proc = subprocess.Popen([
                 sys.executable, 
-                'python-ai-sc2\\bots_controller.py', 
+                'bots_controller.py', 
                 str(i), 
                 str(generation)
                 ])
@@ -99,10 +99,11 @@ for generation in range(LOAD_GENERATION_NUMBER,
 
     # Fitness calculation based on results
     for i in range(sol_per_pop):
-        f = open("python-ai-sc2\\results\\generation_" + str(generation) + "_player_" +
+        f = open("results\\generation_" + str(generation) + "_player_" +
                  str(i) + ".txt", "r")
         result_str = f.readline()
-
+        f.close()
+        
         if result_str == "Result.Victory\n":
             fitness[i] = 1
         else:
@@ -135,7 +136,7 @@ print("Final weights for generation",
 for i in range(0, sol_per_pop):
     print("saved weight: ", i)
     f = open(
-        "python-ai-sc2\\weights\\generation_" + str(num_generations + LOAD_GENERATION_NUMBER)
+        "weights\\generation_" + str(num_generations + LOAD_GENERATION_NUMBER)
         + "_weights_" + str(i) + ".pkl", "wb")
     pickle.dump(pop_weights_mat[i], f)
     f.close()
