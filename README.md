@@ -8,17 +8,17 @@ By installing this library(and maps later) you agree to be bound by the terms of
 
 - Second, you need to install a special API to interact with the game.
 
-You'll need Python 3.6 or newer.
+  You'll need Python 3.6 or newer.
 
-```
-pip3 install --user --upgrade sc2
-```
+  ```
+  pip3 install --user --upgrade sc2
+  ```
 
 - Third, you need to download some maps. Official map downloads are available from [Blizzard/s2client-proto](https://github.com/Blizzard/s2client-proto#downloads). Notice: the map files are to be extracted into *subdirectories* of the `StarCraft II/Maps` directory (if you don't have a `Maps` folder, you need to create one). We need the `Ladder 2017 Season 1`. 
 The final path may look like this, for example: `D:\StarCraft II\Maps\Ladder2017Season1`.
 The files are password protected with the password 'iagreetotheeula'.
 
-And finally, we need to go to sc2 installation folder, find the `paths.py` file there and change the way the game is installed on your computer.
+- And finally, we need to go to sc2 installation folder, find the `paths.py` file there and change the way the game is installed on your computer.
 
 ### Running
 
