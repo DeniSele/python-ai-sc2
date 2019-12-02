@@ -1,2 +1,2 @@
-Result.Defeat
-[127, 0, 0]
+Result.Victory
+[0, 5, 22]

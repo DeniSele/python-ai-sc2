@@ -1,2 +1,2 @@
-Result.Victory
-[15, 16, 3]
+Result.Defeat
+[78, 0, 4]

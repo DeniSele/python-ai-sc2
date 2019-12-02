@@ -14,17 +14,17 @@ import pickle
 #   - Set USE_SAVED_WEIGHTS to True
 #   - Set LOAD_GENERATION_NUMBER to N
 #   N - number of generation files to be used
-USE_SAVED_WEIGHTS = False
-LOAD_GENERATION_NUMBER = 0
+USE_SAVED_WEIGHTS = True
+LOAD_GENERATION_NUMBER = 1
 
 # Population size
-sol_per_pop = 8
+sol_per_pop = 4
 
 # Half the population to break it up into pieces
-half_part_of_sol = 4
+half_part_of_sol = 2
 
 # Mating pool size (number of parents)
-num_parents_mating = 4
+num_parents_mating = 2
 
 # Number of generations
 num_generations = 2
@@ -58,7 +58,7 @@ if not USE_SAVED_WEIGHTS:
 else:
     # Get the latest saved version of the data, based on LOAD_GENERATION_NUMBER
     for curr_sol in numpy.arange(0, sol_per_pop):
-        f = open("weights\\generation_" + str(LOAD_GENERATION_NUMBER) +
+        f = open("python-ai-sc2\\weights\\generation_" + str(LOAD_GENERATION_NUMBER) +
                  "_weights_" + str(curr_sol) + ".pkl", "rb")
         new_weight = pickle.load(f)
         initial_pop_weights.append(new_weight)
@@ -82,15 +82,16 @@ for generation in range(LOAD_GENERATION_NUMBER,
         procs = []
         for i in range(j * half_part_of_sol, half_part_of_sol * (j + 1)):
             print("i: ", i)
-            f = open("weights\\generation_" + str(generation) + "_weights_" +
-                     str(i) + ".pkl", "wb")
+            f = open("python-ai-sc2\\weights\\generation_" + str(generation) +
+                     "_weights_" +  str(i) + ".pkl", "wb")
             pickle.dump(pop_weights_mat[i], f)
             f.close()
             proc = subprocess.Popen([
-                sys.executable, 'bots_controller.py',
-                str(i),
+                sys.executable, 
+                'python-ai-sc2\\bots_controller.py', 
+                str(i), 
                 str(generation)
-            ])
+                ])
             procs.append(proc)
 
         for proc in procs:
@@ -98,7 +99,7 @@ for generation in range(LOAD_GENERATION_NUMBER,
 
     # Fitness calculation based on results
     for i in range(sol_per_pop):
-        f = open("results\\generation_" + str(generation) + "_player_" +
+        f = open("python-ai-sc2\\results\\generation_" + str(generation) + "_player_" +
                  str(i) + ".txt", "r")
         result_str = f.readline()
 
@@ -134,7 +135,7 @@ print("Final weights for generation",
 for i in range(0, sol_per_pop):
     print("saved weight: ", i)
     f = open(
-        "weights\\generation_" + str(num_generations + LOAD_GENERATION_NUMBER)
+        "python-ai-sc2\\weights\\generation_" + str(num_generations + LOAD_GENERATION_NUMBER)
         + "_weights_" + str(i) + ".pkl", "wb")
     pickle.dump(pop_weights_mat[i], f)
     f.close()
