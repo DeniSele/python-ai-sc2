@@ -20,7 +20,7 @@ The files are password protected with the password 'iagreetotheeula'.
 
 - And finally, we need to go to sc2 installation folder, find the `paths.py` file there and change the way the game is installed on your computer.
 
-### Running
+## Running
 
 After installing required librarys, a StarCraft II executable, and some maps, you're ready to get started. Simply run a `training_launcher.py` file. 
 
