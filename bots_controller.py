@@ -27,21 +27,23 @@ class CustomBot(sc2.BotAI):
         if len(sys.argv) > 2:
             self.PLAYER_ID = sys.argv[1]
             self.GENERATION = sys.argv[2]
-            f = open("weights\\generation_" + str(self.GENERATION) +
-                     "_weights_" + str(self.PLAYER_ID) + ".pkl", "rb")
-            self.PLAYER_BRAIN = pickle.load(f)
-            f.close()
+
+        f = open("weights\\generation_" + str(self.GENERATION) + 
+                 "_weights_" + str(self.PLAYER_ID) + ".pkl", "rb")
+        self.PLAYER_BRAIN = pickle.load(f)
+        f.close()
 
     def on_end(self, game_result):
         print('---End of the game---')
-        f = open("results\\generation_" + str(self.GENERATION) + "_player_" +
-                 str(self.PLAYER_ID) + ".txt", "w")
+        f = open("results\\generation_" + str(self.GENERATION) +
+                 "_player_" + str(self.PLAYER_ID) + ".txt", "w")
         if not self.end_game:
             f.write(str(game_result) + "\n")
         else:
             f.write("Result.Defeat\n")
 
         f.write(str(self.ACTION_VECTOR) + "\n")
+        f.close()
 
     async def on_step(self, iteration):
         self.GLOBAL_TIME = (self.state.game_loop / 22.4)
